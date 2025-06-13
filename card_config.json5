@@ -34,27 +34,27 @@
     //     ],
     //     rarity: "epic",
     // },
-    // {
-    //     id: "OGN-246",
-    //     keywords: [
-    //         "champunit",
-    //     ],
-    //     rarity: "epic",
-    // },
     {
-        id: "OGN-001",
+        id: "OGN-246",
         keywords: [
-            "unit",
-            "accelerate",
+            "champunit",
         ],
-        rarity: "common",
+        rarity: "epic",
     },
-        {
-        id: "OGN-002",
-        keywords: [
-            "unit",
-            "discard",
-        ],
-        rarity: "common",
-    },
+    // {
+    //     id: "OGN-001",
+    //     keywords: [
+    //         "unit",
+    //         "accelerate",
+    //     ],
+    //     rarity: "common",
+    // },
+    //     {
+    //     id: "OGN-002",
+    //     keywords: [
+    //         "unit",
+    //         "discard",
+    //     ],
+    //     rarity: "common",
+    // },
 ]
