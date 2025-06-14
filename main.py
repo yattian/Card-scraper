@@ -4,11 +4,12 @@ import requests
 from io import BytesIO
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter
 import pillow_avif
+from cairosvg import svg2png
 
 # === Config ===
 FINAL_DIR = "ImagesFinal"
 PNG_DIR = "ImagesPNG"
-CONFIG_PATH = "card_config.json5"
+CONFIG_PATH = "scraped_cards.json5"
 os.makedirs(FINAL_DIR, exist_ok=True)
 os.makedirs(PNG_DIR, exist_ok=True)
 
@@ -35,17 +36,39 @@ class Card:
         return first_letter + f"{set_num:03d}" + f"{self.pixelborn_internal_numb:02d}" + self.card_num
 
     def download_image(self) -> Image.Image | None:
-        url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/{self.set_key}/cards/{self.id}/full-desktop-2x.avif"
-        try:
-            response = requests.get(url, timeout=10)
-            if response.status_code == 200:
-                print(f"✔ Downloaded: {self.id}")
-                return Image.open(BytesIO(response.content)).convert("RGB")
-            else:
-                print(f"✘ Not found: {self.id} (HTTP {response.status_code})")
-        except Exception as e:
-            print(f"✘ Error downloading {self.id}: {e}")
-        return None
+        if ALT_ART:
+            url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/{self.set_key}/cards/{self.id}a/full-desktop-2x.avif"
+        else:
+            url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/{self.set_key}/cards/{self.id}/full-desktop-2x.avif"
+        
+        if ALT_ART:
+            try:
+                response = requests.get(url, timeout=10)
+                if response.status_code == 200:
+                    print(f"✔ Downloaded ALT: {self.id}")
+                    return Image.open(BytesIO(response.content)).convert("RGB")
+                else:
+                    url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/{self.set_key}/cards/{self.id}/full-desktop-2x.avif"
+                    response = requests.get(url, timeout=10)
+                    if response.status_code == 200:
+                        print(f"✔ Downloaded: {self.id}")
+                        return Image.open(BytesIO(response.content)).convert("RGB")
+                    else:
+                        print(f"✘ Not found: {self.id} (HTTP {response.status_code})")
+            except Exception as e:
+                print(f"✘ Error downloading {self.id}: {e}")
+            return None
+        else:
+            try:
+                response = requests.get(url, timeout=10)
+                if response.status_code == 200:
+                    print(f"✔ Downloaded: {self.id}")
+                    return Image.open(BytesIO(response.content)).convert("RGB")
+                else:
+                    print(f"✘ Not found: {self.id} (HTTP {response.status_code})")
+            except Exception as e:
+                print(f"✘ Error downloading {self.id}: {e}")
+            return None
 
     def resize_and_pad(self, img: Image.Image) -> Image.Image:
         orig_w, orig_h = img.size
@@ -61,10 +84,10 @@ class Card:
     def apply_modifications(self, img: Image.Image) -> Image.Image:
         draw = ImageDraw.Draw(img)
 
-        if "unit" in self.keywords or "champunit" in self.keywords or "spell" in self.keywords:
+        if "unit" in self.keywords or "champunit" in self.keywords or "spell" in self.keywords or "sigspell" in self.keywords:
             self.draw_white_circle(draw)
 
-        if "unit" in self.keywords or "champunit" in self.keywords:
+        if "unit" in self.keywords or "champunit" in self.keywords or "token" in self.keywords:
             x1, y1 = 1024 - 206, 59
             square_size = 57
             draw.rectangle((x1 - square_size, y1, x1, y1 + square_size), fill="black")
@@ -87,140 +110,193 @@ class Card:
     def apply_extra_modifications(self, img: Image.Image) -> Image.Image:
         """Apply keyword-specific modifications and save variants"""
         base_img = img.copy()
+        extra_applied = False
         
         # Apply each keyword modification that generates variants
         if "accelerate" in self.keywords:
             self._create_accelerate_variant(base_img)
+            extra_applied = True
         
         if "discard" in self.keywords:
             self._create_discard_variant(base_img)
+            extra_applied = True
+
+        if "tap" in self.keywords:
+            self._create_tap_variant(base_img)
+
+        if "draw" in self.keywords:
+            self._create_draw_variant(base_img)
+            extra_applied = True
+
+        if "hidden" in self.keywords:
+            self._create_hidden_variant(base_img)
+            extra_applied = True
         
-        if "accelerate" in self.keywords or "discard" in self.keywords:
+        if extra_applied:
             # Always create the base "play" variant (single triangle)
             self._create_play_variant(base_img)
+    
+    def _add_svg_overlay(self, img: Image.Image, svg_string: str) -> Image.Image:
+        """Generic method to add any SVG icon overlay"""
         
-        return img
+        img_width, img_height = img.size
+        if "legend" in self.keywords:
+            img_height = int(img_height * 0.4)
+        else:
+            img_height = int(img_height * 0.3)
+        cx, cy = img_width // 2, img_height
+        
+        # Convert SVG to PNG
+        png_data = svg2png(bytestring=svg_string.encode('utf-8'))
+        icon_img = Image.open(BytesIO(png_data)).convert("RGBA")
+        
+        # Position the icon at the center
+        icon_x = cx - icon_img.width // 2
+        icon_y = cy - icon_img.height // 2
+        
+        # Create a copy of the base image and paste the icon
+        result = img.convert("RGBA")
+        result.paste(icon_img, (icon_x, icon_y), icon_img)
+        
+        return result
+    
+    def _darken_image(self, img: Image.Image, ratio: float = 0.6) -> Image.Image:
+        return ImageEnhance.Brightness(img.copy()).enhance(ratio)
+    
+    def _darken_half_image(self, img: Image.Image, ratio: float = 0.6) -> Image.Image:
+        """Darken image but leave bottom rectangular area untouched"""
+        
+        # Easy to modify dimensions
+        bottom_rect_width = 670      # Width of the untouched rectangle
+        bottom_rect_height = 320     # Height of the untouched rectangle  
+        bottom_margin = 60           # Distance from bottom edge
+        fade_distance = 20
+        
+        # Calculate rectangle position
+        img_width, img_height = img.size
+        rect_x = (img_width - bottom_rect_width) // 2  # Center horizontally
+        rect_y = img_height - bottom_rect_height - bottom_margin  # Position from bottom
+        
+        # Create darkened version of the whole image
+        darkened = ImageEnhance.Brightness(img.copy()).enhance(ratio)
+        
+        # Create mask for the rectangle area with fade
+        mask = Image.new("L", img.size, 0)  # Start with all black (darkened)
+        mask_draw = ImageDraw.Draw(mask)
+        
+        # Draw the main white rectangle (full brightness area)
+        inner_rect = [rect_x + fade_distance, rect_y + fade_distance, 
+                    rect_x + bottom_rect_width - fade_distance, 
+                    rect_y + bottom_rect_height - fade_distance]
+        mask_draw.rectangle(inner_rect, fill=255)
+        
+        # Create gradient fade around the edges
+        for i in range(fade_distance):
+            # Calculate fade intensity (255 at center, 0 at edge)
+            fade_intensity = int(255 * (i + 1) / fade_distance)
+            
+            # Draw expanding rectangles with decreasing intensity
+            fade_rect = [rect_x + fade_distance - i, rect_y + fade_distance - i,
+                        rect_x + bottom_rect_width - fade_distance + i,
+                        rect_y + bottom_rect_height - fade_distance + i]
+            mask_draw.rectangle(fade_rect, outline=fade_intensity, width=1)
+        
+        # Apply gaussian blur to smooth the fade
+        mask = mask.filter(ImageFilter.GaussianBlur(radius=fade_distance // 4))
+        
+        # Composite: where mask is white (255), use original; where black (0), use darkened
+        result = Image.composite(img, darkened, mask)
+        
+        return result
 
     def _create_accelerate_variant(self, base_img: Image.Image):
-        """Create accelerate variant with two triangles"""
         darkened = self._darken_image(base_img)
-        
-        # Add two triangles
-        modified = self._add_triangle(darkened, offset_x=-100)
-        modified = self._add_triangle(modified, offset_x=100)
+        modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-right-icon lucide-chevrons-right"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>')
         
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
     def _create_discard_variant(self, base_img: Image.Image):
-        """Create discard variant with X overlay"""
         darkened = self._darken_image(base_img)
-        modified = self._add_discard_overlay(darkened)
+        modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>')
         
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
     def _create_play_variant(self, base_img: Image.Image):
-        """Create standard play variant with single triangle"""
         darkened = self._darken_image(base_img)
-        modified = self._add_triangle(darkened)
+        modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>')
         
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-    def _darken_image(self, img: Image.Image, ratio: float = 0.6) -> Image.Image:
-        """Apply darkening effect to image"""
-        return ImageEnhance.Brightness(img.copy()).enhance(ratio)
+    def _create_tap_variant(self, base_img: Image.Image):
+        darkened = self._darken_half_image(base_img)
+        modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-corner-right-down-icon lucide-corner-right-down"><path d="m10 15 5 5 5-5"/><path d="M4 4h7a4 4 0 0 1 4 4v12"/></svg>')
+        
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-    def _add_triangle(self, img: Image.Image, offset_x: int = 0) -> Image.Image:
-        """Add a white triangle with shadow to the image"""
-        width, height = img.size
-        cx, cy = width // 2, height // 3
-        base_half = 160
-        height_triangle = 240
-        
-        points = [
-            (cx - base_half + offset_x, cy - height_triangle // 2),
-            (cx - base_half + offset_x, cy + height_triangle // 2),
-            (cx + base_half + offset_x, cy),
-        ]
-        
-        # Create shadow
-        img_with_shadow = self._add_shadow(img, points, blur_radius=6)
-        
-        # Add white triangle
-        overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        overlay_draw = ImageDraw.Draw(overlay)
-        overlay_draw.polygon(points, fill=(255, 255, 255, 230))
-        
-        return Image.alpha_composite(img_with_shadow, overlay)
+    def _create_draw_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                        <rect width="24" height="36" x="0" y="6" rx="2"/>
+                                                        <path d="M8 24h8"/>
+                                                        <path d="M12 20v8"/>
+                                                        </svg>''')
 
-    def _add_discard_overlay(self, img: Image.Image) -> Image.Image:
-        """Add white rectangle with X for discard variant"""
-        width, height = img.size
-        cx, cy = width // 2, height // 3
-        rect_width, rect_height = 200, 300
-        
-        x0 = cx - rect_width // 2
-        y0 = cy - rect_height // 2
-        x1 = cx + rect_width // 2
-        y1 = cy + rect_height // 2
-        
-        # Create shadow
-        img_with_shadow = self._add_shadow(img, [x0, y0, x1, y1], blur_radius=12, is_rectangle=True)
-        
-        # Add white rectangle
-        overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        overlay_draw = ImageDraw.Draw(overlay)
-        overlay_draw.rectangle([x0, y0, x1, y1], fill=(255, 255, 255, 255))
-        
-        # Add X with border
-        self._draw_x_with_border(overlay_draw, x0, y0, x1, y1)
-        
-        return Image.alpha_composite(img_with_shadow, overlay)
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-    def _add_shadow(self, img: Image.Image, shape_coords, blur_radius: int, is_rectangle: bool = False) -> Image.Image:
-        """Add shadow effect to a shape"""
-        shadow_mask = Image.new("L", img.size, 0)
-        mask_draw = ImageDraw.Draw(shadow_mask)
+    def _create_hidden_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>')
         
-        if is_rectangle:
-            mask_draw.rectangle(shape_coords, fill=255)
-        else:
-            mask_draw.polygon(shape_coords, fill=255)
-        
-        blurred = shadow_mask.filter(ImageFilter.GaussianBlur(blur_radius))
-        shadow = Image.new("RGBA", img.size, (0, 0, 0, 100))
-        return Image.composite(shadow, img.convert("RGBA"), blurred)
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-    def _draw_x_with_border(self, draw: ImageDraw.ImageDraw, x0: int, y0: int, x1: int, y1: int):
-        """Draw an X with black border inside a rectangle"""
-        x_pad, y_pad = 10, 10
-        x_thickness = 20
-        
-        line1 = [(x0 + x_pad, y0 + y_pad), (x1 - x_pad, y1 - y_pad)]
-        line2 = [(x0 + x_pad, y1 - y_pad), (x1 - x_pad, y0 + y_pad)]
-        
-        # Black border
-        draw.line(line1, fill="black", width=x_thickness + 6)
-        draw.line(line2, fill="black", width=x_thickness + 6)
-        
-        # White lines
-        draw.line(line1, fill="white", width=x_thickness)
-        draw.line(line2, fill="white", width=x_thickness)
+        # Modified hidden requires another hidden play (eye-off + chevron-right)
+        combined_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 48 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Eye-off icon (left side) -->
+        <g transform="translate(0,0)">
+        <path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/>
+        <path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/>
+        <path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/>
+        <path d="m2 2 20 20"/>
+        </g>
+        <!-- Chevron-right icon (right side) -->
+        <g transform="translate(0,-24) scale(3)">
+        <path d="m9 18 6-6-6-6"/>
+        </g>
+        </svg>'''
 
-    def draw_white_circle(self, draw: ImageDraw.ImageDraw):
-        if self.rarity in ["common", "uncommon"]:
-            cx = 190
-            cy = 51
-            r = 78
+        modified = self._add_svg_overlay(darkened, combined_svg)
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
+
+
+
+    def draw_white_circle(self, draw: ImageDraw.ImageDraw): 
+        if 'sigspell' in self.keywords:
+            cx = 185
+            cy = 48
+            r = 86
             
             draw.ellipse((cx, cy, cx + r, cy + r), fill="white")
-        
-        if self.rarity in ["rare", "epic", "legendary"]:
+        elif self.rarity in ["common", "uncommon"]:
+            cx = 190
+            cy = 52
+            r = 79
+            
+            draw.ellipse((cx, cy, cx + r, cy + r), fill="white")
+        elif self.rarity in ["rare", "epic", "legendary"]:
             cx = 192.6
             cy = 49
             r = 82
@@ -244,6 +320,17 @@ class Card:
 
         print(f"✅ Saved: {pixel_id}.png")
 
+print("==== Card Tagging Tool ====")
+print("1. Normal art")
+print("2. Alt art")
+choice = input("Choose option: ").strip()
+
+if choice == "1":
+    ALT_ART = False
+elif choice == "2":
+    ALT_ART = True
+else:
+    ALT_ART = False
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
     entries = json.load(f)

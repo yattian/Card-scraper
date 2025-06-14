@@ -1,7 +1,7 @@
 import json5 as json
 import os
 
-CONFIG_FILE = "card_config.json5"
+CONFIG_FILE = "scraped_cards.json5"
 MAX_CARD_ID = 298
 
 KEYWORD_MENU = {
@@ -15,8 +15,9 @@ KEYWORD_MENU = {
     "8": "rune",
     "9": "discard",
     "10": "sigspell",
-    "11": "leader",
+    "11": "legend",
     "12": "champunit",
+    "13": "token",
     "v": "next",
     "q": "quit"
 }
@@ -152,20 +153,17 @@ def main():
     print("==== Card Tagging Tool ====")
     print("1. Tag range of cards")
     print("2. Tag single card")
-    print("3. Sort")
     choice = input("Choose option: ").strip()
 
     if choice == "1":
         config = tag_all_prompt(config)
     elif choice == "2":
         config = tag_one(config)
-    elif choice == "3":
-        config = load_config()
-        config = sort_config(config)
     else:
         print("❌ Invalid menu choice.")
         return
 
+    config = sort_config(config)
     save_config(config)
 
 
