@@ -13,7 +13,7 @@ A Python-based tool for scraping and processing card images from Riftbound, gene
 
 ## Quick Start
 
-Note: You can skip to step 4 if you just want to generate the images since I have already uploaded the json files. 
+**Note:** You can skip to step 4 if you just want to generate the images since I have already uploaded the json files. There will be MORE cards than required. This is because the image to text reader reads keywords like "Discard" and generates a discard variant for Pixelborn. However, some cards do not require that image so it's not needed. This is fine, because Pixelborn won't call on those cards anyway.
 
 1. **Install dependencies:**
    ```bash
