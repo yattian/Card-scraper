@@ -2,6 +2,8 @@
 
 A Python-based tool for scraping and processing card images from Riftbound, generating custom variants for use with Pixelborn (not affiliated). This tool is designed for personal use only.
 
+![image](https://github.com/user-attachments/assets/17964dbf-8504-4428-a0f3-37e89dfe8c86)
+
 ## Features
 
 - **Automated card scraping** with OCR-based keyword detection
