@@ -538,6 +538,7 @@
         id: "OGN-162",
         keywords: [
             "champunit",
+            "accelerate"
         ],
         rarity: "epic",
     },
