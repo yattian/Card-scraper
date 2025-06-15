@@ -109,14 +109,8 @@ For cards with special abilities, the tool automatically generates multiple vers
 - Designed for Riftbound card format only
 - OCR accuracy may vary depending on card design
 - Manual verification recommended for complex cards
-- Personal use only - not affiliated with Pixelborn or Riftbound
 
-## Troubleshooting
-
-- **OCR errors:** Ensure template images are present in `assets/` folder
-- **Download failures:** Check internet connection and CDN availability  
-- **Keyword detection issues:** Use manual configuration to override incorrect assignments
-- **Image generation problems:** Verify all dependencies are installed correctly
+## Made with vibe coding woohoo!
 
 ---
 
