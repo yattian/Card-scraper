@@ -1,3 +1,11 @@
+## Quick Start
+
+**Note:** You can skip to step 4 if you just want to generate the images since I have already uploaded the json files. There will be MORE cards than required. This is because the image to text reader reads keywords like "Discard" and generates a discard variant for Pixelborn. However, some cards do not require that image so it's not needed. This is fine, because Pixelborn won't call on those cards anyway.
+
+**Note 2:** Yes... you can just have the ZIP file of the images, here you go (paste in Pixelborn settings) - https://archive.org/download/images-final/pixelbornaltart.zip
+
+**Note 3:** I've found out that you don't even need to restart the client after uploading images, just go into cards and scroll to the bottom and back up quickly. 
+
 # Card Scraper for Pixelborn
 
 A Python-based tool for scraping and processing card images from Riftbound, generating custom variants for use with Pixelborn (not affiliated). This tool is designed for personal use only.
@@ -12,10 +20,6 @@ A Python-based tool for scraping and processing card images from Riftbound, gene
 - **Multiple card variants** including accelerate, discard, tap, draw, and hidden versions
 - **Alternative artwork** support
 - **Pixelborn-compatible** output format
-
-## Quick Start
-
-**Note:** You can skip to step 4 if you just want to generate the images since I have already uploaded the json files. There will be MORE cards than required. This is because the image to text reader reads keywords like "Discard" and generates a discard variant for Pixelborn. However, some cards do not require that image so it's not needed. This is fine, because Pixelborn won't call on those cards anyway.
 
 1. **Install dependencies:**
    ```bash
