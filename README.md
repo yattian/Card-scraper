@@ -4,6 +4,8 @@
 
 **Note 2:** I've found out that you don't even need to restart the client after uploading images, just go into cards and scroll to the bottom and back up quickly. 
 
+**Note 3:** Again, this is mostly automated so there may be some problems with the images and Pixelborn.
+
 # Card Scraper for Pixelborn
 
 A Python-based tool for scraping and processing card images from Riftbound, generating custom variants for use with Pixelborn (not affiliated). This tool is designed for personal use only.
