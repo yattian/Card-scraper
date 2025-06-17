@@ -327,18 +327,49 @@ class Card:
 print("==== Card Tagging Tool ====")
 print("1. Normal art")
 print("2. Alt art")
+print("3. Sort JSON file")
 choice = input("Choose option: ").strip()
-
-
-SPECIFIC_CARDS = [] 
-
 
 if choice == "1":
     ALT_ART = False
 elif choice == "2":
     ALT_ART = True
+elif choice == "3":
+    # Sort the JSON file
+    with open(CONFIG_PATH, "r") as f:
+        entries = json.load(f)
+    
+    # Check for duplicates
+    seen_ids = {}
+    duplicates = []
+    for entry in entries:
+        card_id = entry["id"]
+        if card_id in seen_ids:
+            duplicates.append(card_id)
+        else:
+            seen_ids[card_id] = True
+    
+    if duplicates:
+        print(f"⚠️  Found {len(duplicates)} duplicate cards: {duplicates}")
+    
+    def sort_config(config):
+        def card_sort_key(entry):
+            # Extract numeric part from "OGN-001" -> 1
+            return int(entry["id"].split("-")[1])
+        return sorted(config, key=card_sort_key)
+    
+    sorted_entries = sort_config(entries)
+    
+    with open(CONFIG_PATH, "w") as f:
+        json.dump(sorted_entries, f, indent=4)
+    
+    print(f"✅ Sorted {len(sorted_entries)} cards in {CONFIG_PATH}")
+    exit()
 else:
     ALT_ART = False
+
+
+SPECIFIC_CARDS = [] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:

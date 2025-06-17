@@ -161,7 +161,7 @@
     {
         id: "OGN-041",
         keywords: [
-            "champunit"
+            "champunit",
         ],
         rarity: "epic",
     },
@@ -323,7 +323,7 @@
     {
         id: "OGN-082",
         keywords: [
-            "unit"
+            "unit",
         ],
         rarity: "epic",
     },
@@ -562,7 +562,7 @@
         id: "OGN-162",
         keywords: [
             "champunit",
-            "accelerate"
+            "accelerate",
         ],
         rarity: "epic",
     },
@@ -684,7 +684,7 @@
     {
         id: "OGN-203",
         keywords: [
-            "spell"
+            "spell",
         ],
         rarity: "epic",
     },
@@ -955,7 +955,7 @@
     {
         id: "OGN-266",
         keywords: [
-            "sigspell"
+            "sigspell",
         ],
         rarity: "epic",
     },
@@ -970,7 +970,7 @@
     {
         id: "OGN-268",
         keywords: [
-            "sigspell"
+            "sigspell",
         ],
         rarity: "epic",
     },
