@@ -132,7 +132,7 @@ class Card:
             self._create_hidden_variant(base_img)
             extra_applied = True
         
-        if extra_applied:
+        if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
             self._create_play_variant(base_img)
     
@@ -281,10 +281,14 @@ class Card:
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-
-
     def draw_white_circle(self, draw: ImageDraw.ImageDraw): 
         if 'sigspell' in self.keywords:
+            cx = 185
+            cy = 48
+            r = 86
+            
+            draw.ellipse((cx, cy, cx + r, cy + r), fill="white")
+        elif 'spell' in self.keywords and self.rarity == "epic":
             cx = 185
             cy = 48
             r = 86
@@ -325,15 +329,34 @@ print("1. Normal art")
 print("2. Alt art")
 choice = input("Choose option: ").strip()
 
+
+SPECIFIC_CARDS = [] 
+
+
 if choice == "1":
     ALT_ART = False
 elif choice == "2":
     ALT_ART = True
 else:
     ALT_ART = False
+
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
     entries = json.load(f)
+    
+    # Filter entries to only include specific card numbers
+    if len(SPECIFIC_CARDS) >= 1:
+        filtered_entries = []
+        for entry in entries:
+            # Extract card number from ID (e.g., "OGN-001" -> 1)
+            card_num = int(entry["id"].split("-")[1])
+            if card_num in SPECIFIC_CARDS:
+                filtered_entries.append(entry)
+        entries = filtered_entries
+        print(f"Processing {len(entries)} specific cards: {SPECIFIC_CARDS}")
+    else:
+        print(f"Processing all {len(entries)} cards")
+    
     cards = [Card.from_dict(entry) for entry in entries]
 
 for card in cards:

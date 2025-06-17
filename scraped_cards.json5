@@ -18,7 +18,6 @@
     {
         id: "OGN-003",
         keywords: [
-            "discard",
             "unit",
         ],
         rarity: "common",
@@ -33,7 +32,6 @@
     {
         id: "OGN-005",
         keywords: [
-            "draw",
             "spell",
         ],
         rarity: "common",
@@ -41,7 +39,6 @@
     {
         id: "OGN-006",
         keywords: [
-            "discard",
             "unit",
         ],
         rarity: "common",
@@ -56,7 +53,6 @@
     {
         id: "OGN-008",
         keywords: [
-            "discard",
             "spell",
         ],
         rarity: "common",
@@ -84,6 +80,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-014",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-016",
         keywords: [
             "unit",
@@ -93,9 +96,14 @@
     {
         id: "OGN-020",
         keywords: [
-            "discard",
             "unit",
-            "draw",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-024",
+        keywords: [
+            "spell",
         ],
         rarity: "uncommon",
     },
@@ -109,7 +117,6 @@
     {
         id: "OGN-030",
         keywords: [
-            "discard",
             "champunit",
             "accelerate",
         ],
@@ -126,15 +133,20 @@
         id: "OGN-036",
         keywords: [
             "champunit",
-            "discard"
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-037",
+        keywords: [
+            "unit",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-038",
         keywords: [
             "unit",
-            "draw",
         ],
         rarity: "epic",
     },
@@ -213,6 +225,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-056",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-057",
         keywords: [
             "hidden",
@@ -223,7 +242,6 @@
     {
         id: "OGN-058",
         keywords: [
-            "draw",
             "spell",
         ],
         rarity: "uncommon",
@@ -334,7 +352,6 @@
     {
         id: "OGN-095",
         keywords: [
-            "draw",
             "spell",
         ],
         rarity: "common",
@@ -343,7 +360,6 @@
         id: "OGN-096",
         keywords: [
             "unit",
-            "draw",
         ],
         rarity: "common",
     },
@@ -359,8 +375,14 @@
         id: "OGN-099",
         keywords: [
             "gear",
-            "draw",
             "tap",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-100",
+        keywords: [
+            "unit",
         ],
         rarity: "uncommon",
     },
@@ -368,7 +390,6 @@
         id: "OGN-101",
         keywords: [
             "gear",
-            "draw",
         ],
         rarity: "uncommon",
     },
@@ -413,7 +434,6 @@
         id: "OGN-118",
         keywords: [
             "unit",
-            "draw",
         ],
         rarity: "rare",
     },
@@ -464,7 +484,6 @@
     {
         id: "OGN-134",
         keywords: [
-            "draw",
             "spell",
         ],
         rarity: "common",
@@ -479,7 +498,6 @@
     {
         id: "OGN-138",
         keywords: [
-            "draw",
             "spell",
         ],
         rarity: "uncommon",
@@ -506,6 +524,13 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-148",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-149",
         keywords: [
             "unit",
@@ -516,7 +541,6 @@
         id: "OGN-158",
         keywords: [
             "champunit",
-            "draw",
         ],
         rarity: "rare",
     },
@@ -588,27 +612,29 @@
     {
         id: "OGN-178",
         keywords: [
-            "discard",
             "unit",
-            "draw",
         ],
         rarity: "common",
+    },
+    {
+        id: "OGN-179",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
     },
     {
         id: "OGN-181",
         keywords: [
             "gear",
             "tap",
-            "hidden",
         ],
         rarity: "uncommon",
     },
     {
         id: "OGN-185",
         keywords: [
-            "discard",
             "unit",
-            "draw",
         ],
         rarity: "uncommon",
     },
@@ -651,7 +677,6 @@
     {
         id: "OGN-202",
         keywords: [
-            "discard",
             "champunit",
         ],
         rarity: "epic",
@@ -824,7 +849,7 @@
     {
         id: "OGN-251",
         keywords: [
-            "draw",
+            "legend",
         ],
         rarity: "rare",
     },
@@ -832,7 +857,6 @@
         id: "OGN-252",
         keywords: [
             "sigspell",
-            "discard",
         ],
         rarity: "epic",
     },
@@ -908,7 +932,8 @@
     {
         id: "OGN-263",
         keywords: [
-            "hidden",
+            "legend",
+            "tap",
         ],
         rarity: "rare",
     },
@@ -916,7 +941,6 @@
         id: "OGN-264",
         keywords: [
             "sigspell",
-            "hidden",
         ],
         rarity: "epic",
     },
@@ -977,6 +1001,20 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-276",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-277",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-297",
         keywords: [
             "location",
@@ -987,6 +1025,7 @@
         id: "OGN-298",
         keywords: [
             "location",
+            "discard",
         ],
         rarity: "uncommon",
     },

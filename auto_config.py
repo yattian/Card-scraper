@@ -187,7 +187,11 @@ class Card:
 
         for search_term, keyword in text_keywords_map.items():
             if search_term in text_keywords:
-                keywords.append(keyword)
+                if search_term is "hidden":
+                    keywords.append(keyword)
+                else:
+                    if "may" in text_keywords:
+                        keywords.append(keyword)
 
         if "unit" in keywords:
             if "spell" in keywords or "sigspell" in keywords:
