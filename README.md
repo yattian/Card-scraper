@@ -16,10 +16,10 @@ A Python-based tool for scraping and processing card images from Riftbound, gene
 
 - **Automated card scraping** with OCR-based keyword detection
 - **Rarity detection** using colour analysis
-- **Manual configuration** options for fine-tuning card metadata
+- **Manual configuration** options for fine tuning card metadata
 - **Multiple card variants** including accelerate, discard, tap, draw, and hidden versions
 - **Alternative artwork** support
-- **Pixelborn-compatible** output format
+- **Pixelborn compatible** output format
 
 **Note:** You can skip to step 4 if you just want to generate the images since I have already uploaded the json files. There will be MORE cards than required. This is because the image to text reader reads keywords like "Discard" and generates a discard variant for Pixelborn. However, some cards do not require that image so it's not needed. This is fine, because Pixelborn won't call on those cards anyway.
 
@@ -75,21 +75,14 @@ A Python-based tool for scraping and processing card images from Riftbound, gene
 - Supports tagging individual cards or ranges
 - Keyword management with predefined options
 - Rarity assignment with validation
+- You can also edit the json5 file directly if required
 
 ### Image Generation (`main.py`)
 - Resizes and crops images to 1024x1024 format
-- Applies keyword-specific visual modifications
+- Applies keyword specific visual modifications
 - Generates multiple variants for cards with special abilities
 - Creates darkened overlay versions with appropriate icons
-- Outputs Pixelborn-compatible naming convention
-
-## Supported Keywords
-
-**Card Types:**
-- Unit, Spell, Gear, Rune, Signature Spell, Legend, Champion Unit, Token, Location
-
-**Abilities:**
-- Accelerate, Draw, Hidden, Discard, Tap
+- Outputs Pixelborn compatible naming convention
 
 ## Generated Variants
 
