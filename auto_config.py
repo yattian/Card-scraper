@@ -7,6 +7,8 @@ import easyocr
 import numpy as np
 import cv2
 
+JSON_DUMP_FILE = "scraped_cards_tester.json5"
+
 # Simple Card class
 class Card:
     def __init__(self, card_num: int):
@@ -187,7 +189,7 @@ class Card:
 
         for search_term, keyword in text_keywords_map.items():
             if search_term in text_keywords:
-                if search_term is "hidden":
+                if search_term == "hidden":
                     keywords.append(keyword)
                 else:
                     if "may" in text_keywords:
@@ -201,13 +203,14 @@ class Card:
 
 # Main scraping function
 def scrape_cards():
-    """Scrape first 10 cards and extract text"""
+    """Scrape cards and extract text"""
     results = []
     results_data = []
     lst_cards = [1, 2, 40, 44, 53, 273, 4, 66, 78, 77, 89, 247, 248, 275]
     lst_cards = [248]
     lst_cards.sort()
 
+    # for i in lst_cards:
     for i in range(1, 299):
         card = Card(i)
         
@@ -254,7 +257,7 @@ def scrape_cards():
     # Save results
     # Load existing data if file exists
     try:
-        with open("scraped_cards.json5", "r") as f:
+        with open(JSON_DUMP_FILE, "r") as f:
             existing_data = json.load(f)
     except FileNotFoundError:
         existing_data = []
@@ -279,10 +282,10 @@ def scrape_cards():
 
     sorted_data = sort_config(updated_data)
 
-    with open("scraped_cards.json5", "w") as f:
+    with open(JSON_DUMP_FILE, "w") as f:
         json.dump(sorted_data, f, indent=4)
 
-    print(f"Updated scraped_cards.json5 with {len(results)} cards")
+    print(f"Updated {JSON_DUMP_FILE} with {len(results)} cards")
 
 if __name__ == "__main__":
     scrape_cards()

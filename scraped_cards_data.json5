@@ -77,6 +77,13 @@
         ],
     },
     {
+        id: "OGN-014",
+        text: [
+            "SPELL",
+            "This Is Energy cost is reduced by the highest Might among units you control. Deal 5 to a unit at a battlefield. spell'",
+        ],
+    },
+    {
         id: "OGN-016",
         text: [
             "UNIT BANDLE CITY MECH",
@@ -88,6 +95,13 @@
         text: [
             "UNIT BANDLE CITY MECH",
             "LEGION Whenyou play me, discard 2,then draw 2. (Get the effect ifyou've played another card this turn )",
+        ],
+    },
+    {
+        id: "OGN-024",
+        text: [
+            "SPELL",
+            "ACTION on your turn or in showdowns) Deal 4 to a unit at a battlefield. Draw |. dav tora (Play",
         ],
     },
     {
@@ -116,6 +130,13 @@
         text: [
             "CHAMPION UNIT PILTOVER",
             "GANKING can move from battlefield to battlefield )",
+        ],
+    },
+    {
+        id: "OGN-037",
+        text: [
+            "UNIT SPIRIT",
+            "ASSAULT 2 (+2 while Im an attacker) When you kill a unit with a spell, you may pay 0",
         ],
     },
     {
@@ -193,6 +214,13 @@
         text: [
             "UNIT IONIA",
             "While Im attacking or defending alone, have",
+        ],
+    },
+    {
+        id: "OGN-056",
+        text: [
+            "UNIT PILTOVER MECH",
+            "When | conquer; you may kill a gear Ifyou do; buff",
         ],
     },
     {
@@ -336,6 +364,13 @@
         ],
     },
     {
+        id: "OGN-100",
+        text: [
+            "UNIT MOUNT TARGON",
+            "VISION (When you play me; look at the card of your Main Deck You may recycle it) Other friendly units have VISION top",
+        ],
+    },
+    {
         id: "OGN-101",
         text: [
             "GEAR",
@@ -469,6 +504,13 @@
         ],
     },
     {
+        id: "OGN-148",
+        text: [
+            "CHAMPION UNIT ANIVIA FRELJORD BIRD",
+            "When attack; deal 3 to all enemy units here:",
+        ],
+    },
+    {
         id: "OGN-149",
         text: [
             "UNIT SHADOW ISLES",
@@ -550,6 +592,13 @@
         text: [
             "UNIT",
             "DEATHKNELL Discard 2,then draw 2. (When / the effect ) die, get",
+        ],
+    },
+    {
+        id: "OGN-179",
+        text: [
+            "SPELL",
+            "ACTION (Play on your turn or in showdowns) Each player kills one of their gear",
         ],
     },
     {
