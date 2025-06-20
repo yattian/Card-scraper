@@ -105,7 +105,7 @@ For cards with special abilities, the tool automatically generates multiple vers
 
 ## Made with vibe coding woohoo!
 
-P.S. Thank you community for using my images! Means a lot to me.
+P.S. Thank you community for using my image link! Means a lot to me.
 
 ![image](https://github.com/user-attachments/assets/4525f9e5-10c8-4ffa-9a3d-5e7dcf1001a0)
 
