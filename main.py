@@ -369,7 +369,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [201, 278, 35, 15, 125, 207] 
+SPECIFIC_CARDS = [205] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
@@ -392,3 +392,5 @@ with open(CONFIG_PATH, "r") as f:
 
 for card in cards:
     card.process()
+
+# https://lucide.dev/icons/

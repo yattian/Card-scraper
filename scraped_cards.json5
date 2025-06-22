@@ -1072,4 +1072,54 @@
         ],
         rarity: "uncommon",
     },
+    {
+        id: "OGN-028",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-290",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-152",
+        keywords: [
+            "gear",
+            "tap"
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-217",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-157",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-119",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
+    },
+        {
+        id: "OGN-205",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
+    },
 ]
