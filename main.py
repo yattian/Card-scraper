@@ -131,6 +131,10 @@ class Card:
         if "hidden" in self.keywords:
             self._create_hidden_variant(base_img)
             extra_applied = True
+
+        if "qiyana_victorious" in self.keywords:
+            self._create_draw_variant(base_img)
+            self._create_channel_variant(base_img)
         
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
@@ -281,6 +285,14 @@ class Card:
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
+    def _create_channel_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-import-icon lucide-import"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M8 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-4"/></svg>''')
+
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
+
     def draw_white_circle(self, draw: ImageDraw.ImageDraw): 
         if 'sigspell' in self.keywords:
             cx = 185
@@ -369,7 +381,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [] 
+SPECIFIC_CARDS = [212, 155] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:

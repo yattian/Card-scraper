@@ -577,6 +577,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-136",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-137",
         keywords: [
             "unit",
@@ -639,6 +646,14 @@
             "spell",
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-155",
+        keywords: [
+            "champunit",
+            "qiyana_victorious",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-157",
@@ -863,6 +878,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-212",
+        keywords: [
+            "gear",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-213",
         keywords: [
             "hidden",
@@ -925,6 +947,13 @@
             "unit",
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-235",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-238",
@@ -1182,6 +1211,13 @@
     },
     {
         id: "OGN-290",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-291",
         keywords: [
             "location",
         ],
