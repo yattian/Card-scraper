@@ -1,0 +1,171 @@
+[
+    {
+        id: "OGS-001",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-002",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGS-003",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGS-004",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-005",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGS-006",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-007",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-008",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGS-009",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-010",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-011",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGS-012",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGS-013",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-014",
+        keywords: [
+            "champunit",
+            "tap"
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-015",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGS-016",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGS-017",
+        keywords: [
+            "legend",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-018",
+        keywords: [
+            "unit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-019",
+        keywords: [
+            "legend",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-020",
+        keywords: [
+            "sigspell",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-021",
+        keywords: [
+            "legend",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-022",
+        keywords: [
+            "spell",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGS-023",
+        keywords: [
+            "legend",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGS-024",
+        keywords: [
+            "spell",
+        ],
+        rarity: "epic",
+    },
+]

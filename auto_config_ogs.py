@@ -7,17 +7,17 @@ import easyocr
 import numpy as np
 import cv2
 
-JSON_DUMP_FILE = "scraped_cards_tester.json5"
+JSON_DUMP_FILE = "scraped_cards_ogs.json5"
 
 # Simple Card class
 class Card:
     def __init__(self, card_num: int):
-        self.id = f"OGN-{card_num:03d}"
+        self.id = f"OGS-{card_num:03d}"
         self.card_num = card_num
     
     def download_image(self) -> Image.Image | None:
         """Download card image from the website"""
-        url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/OGN/cards/{self.id}/full-desktop-2x.avif"
+        url = f"https://cdn.rgpub.io/public/live/map/riftbound/latest/OGS/cards/{self.id}/full-desktop-2x.avif"
         try:
             response = requests.get(url, timeout=10)
             if response.status_code == 200:
@@ -211,7 +211,7 @@ def scrape_cards():
     lst_cards.sort()
 
     # for i in lst_cards:
-    for i in range(1, 299):
+    for i in range(1, 25):
         card = Card(i)
         
         # Download image

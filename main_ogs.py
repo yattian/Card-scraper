@@ -7,9 +7,9 @@ import pillow_avif
 from cairosvg import svg2png
 
 # === Config ===
-FINAL_DIR = "ImagesFinal"
-PNG_DIR = "ImagesPNG"
-CONFIG_PATH = "scraped_cards.json5"
+FINAL_DIR = "ImagesFinal_OGS"
+PNG_DIR = "ImagesPNG_OGS"
+CONFIG_PATH = "scraped_cards_ogs.json5"
 os.makedirs(FINAL_DIR, exist_ok=True)
 os.makedirs(PNG_DIR, exist_ok=True)
 
@@ -20,7 +20,7 @@ class Card:
         self.keywords = keywords
         self.rarity = rarity
         self.set_key, self.card_num = self.id.split("-")
-        self.pixelborn_internal_numb = 0  # currently hardcoded as 00
+        self.pixelborn_internal_numb = 10  # currently hardcoded as 00
 
     @classmethod
     def from_dict(cls, data: dict):
@@ -31,7 +31,7 @@ class Card:
         )
 
     def pixelborn_id(self, first_letter):
-        set_config = {"OGN": 1}
+        set_config = {"OGS": 1}
         set_num = set_config.get(self.set_key, 1)
         return first_letter + f"{set_num:03d}" + f"{self.pixelborn_internal_numb:02d}" + self.card_num
 
@@ -135,12 +135,6 @@ class Card:
         if "qiyana_victorious" in self.keywords:
             self._create_draw_variant(base_img)
             self._create_channel_variant(base_img)
-
-        if "udyr_wildman" in self.keywords:
-            self._create_damage_variant(base_img)
-            self._create_stun_variant(base_img)
-            self._create_ready_variant(base_img)
-            self._create_ganking_variant(base_img)
         
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
@@ -253,7 +247,7 @@ class Card:
 
     def _create_draw_variant(self, base_img: Image.Image):
         darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 48" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 48" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                         <rect width="24" height="36" x="0" y="6" rx="2"/>
                                                         <path d="M8 24h8"/>
                                                         <path d="M12 20v8"/>
@@ -293,39 +287,7 @@ class Card:
 
     def _create_channel_variant(self, base_img: Image.Image):
         darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-import-icon lucide-import"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M8 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-4"/></svg>''')
-
-        pixel_id = self.pixelborn_id("a")
-        self.pixelborn_internal_numb += 1
-        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
-
-    def _create_damage_variant(self, base_img: Image.Image):
-        darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''')
-
-        pixel_id = self.pixelborn_id("a")
-        self.pixelborn_internal_numb += 1
-        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
-
-    def _create_stun_variant(self, base_img: Image.Image):
-        darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shell-icon lucide-shell"><path d="M14 11a2 2 0 1 1-4 0 4 4 0 0 1 8 0 6 6 0 0 1-12 0 8 8 0 0 1 16 0 10 10 0 1 1-20 0 11.93 11.93 0 0 1 2.42-7.22 2 2 0 1 1 3.16 2.44"/></svg>''')
-
-        pixel_id = self.pixelborn_id("a")
-        self.pixelborn_internal_numb += 1
-        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
-
-    def _create_ready_variant(self, base_img: Image.Image):
-        darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-corner-right-up-icon lucide-corner-right-up"><path d="m10 9 5-5 5 5"/><path d="M4 20h7a4 4 0 0 0 4-4V4"/></svg>''')
-
-        pixel_id = self.pixelborn_id("a")
-        self.pixelborn_internal_numb += 1
-        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
-
-    def _create_ganking_variant(self, base_img: Image.Image):
-        darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left-right-icon lucide-arrow-left-right"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></svg>''')
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-import-icon lucide-import"><path d="M12 3v12"/><path d="m8 11 4 4 4-4"/><path d="M8 5H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-4"/></svg>''')
 
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
@@ -419,7 +381,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [44, 48, 155, 157] 
+SPECIFIC_CARDS = [] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
