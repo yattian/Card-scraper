@@ -80,6 +80,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-013",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-014",
         keywords: [
             "spell",
@@ -232,9 +239,23 @@
         rarity: "common",
     },
     {
+        id: "OGN-049",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-050",
         keywords: [
             "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-052",
+        keywords: [
+            "unit",
         ],
         rarity: "common",
     },
@@ -386,6 +407,27 @@
         rarity: "common",
     },
     {
+        id: "OGN-085",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-087",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-088",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-089",
         keywords: [
             "rune",
@@ -448,6 +490,13 @@
         id: "OGN-103",
         keywords: [
             "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-105",
+        keywords: [
+            "spell",
         ],
         rarity: "uncommon",
     },
@@ -556,9 +605,37 @@
         rarity: "common",
     },
     {
+        id: "OGN-127",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-128",
         keywords: [
             "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-129",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-130",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-131",
+        keywords: [
+            "unit",
         ],
         rarity: "common",
     },
@@ -606,6 +683,13 @@
     },
     {
         id: "OGN-140",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-142",
         keywords: [
             "unit",
         ],
@@ -721,9 +805,37 @@
         rarity: "common",
     },
     {
+        id: "OGN-170",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-171",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-172",
         keywords: [
             "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-174",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-176",
+        keywords: [
+            "unit",
         ],
         rarity: "common",
     },
@@ -850,6 +962,13 @@
         rarity: "epic",
     },
     {
+        id: "OGN-206",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-207",
         keywords: [
             "spell",
@@ -867,6 +986,13 @@
         id: "OGN-209",
         keywords: [
             "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-210",
+        keywords: [
+            "unit",
         ],
         rarity: "common",
     },
@@ -900,6 +1026,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-215",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-216",
         keywords: [
             "unit",
@@ -919,6 +1052,20 @@
             "unit",
         ],
         rarity: "common",
+    },
+    {
+        id: "OGN-219",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-222",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
     },
     {
         id: "OGN-225",
@@ -1210,6 +1357,41 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-279",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-284",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-285",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-286",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-288",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-290",
         keywords: [
             "location",
@@ -1218,6 +1400,13 @@
     },
     {
         id: "OGN-291",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-294",
         keywords: [
             "location",
         ],
