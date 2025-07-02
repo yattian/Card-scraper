@@ -170,6 +170,36 @@ class Card:
         
         return result
     
+    def _add_two_svg_overlay(self, img: Image.Image, svg_string: str) -> Image.Image:
+        """Add two SVG overlays: one on the left and one on the right of the card"""
+
+        img_width, img_height = img.size
+        if "legend" in self.keywords:
+            img_height = int(img_height * 0.4)
+        else:
+            img_height = int(img_height * 0.3)
+        cy = img_height
+
+        # Convert both SVGs to PNG
+        png_left = svg2png(bytestring=svg_string.encode('utf-8'))
+        png_right = svg2png(bytestring=svg_string.encode('utf-8'))
+
+        icon_left = Image.open(BytesIO(png_left)).convert("RGBA")
+        icon_right = Image.open(BytesIO(png_right)).convert("RGBA")
+
+        # Compute horizontal positions (25% and 75% of width)
+        left_x = int(img_width * 0.35) - icon_left.width // 2
+        right_x = int(img_width * 0.65) - icon_right.width // 2
+        icon_y = cy - icon_left.height // 2  # Same vertical for both
+
+        # Paste icons onto a copy of the image
+        result = img.convert("RGBA")
+        result.paste(icon_left, (left_x, icon_y), icon_left)
+        result.paste(icon_right, (right_x, icon_y), icon_right)
+
+        return result
+
+    
     def _darken_image(self, img: Image.Image, ratio: float = 0.6) -> Image.Image:
         return ImageEnhance.Brightness(img.copy()).enhance(ratio)
     
@@ -301,7 +331,7 @@ class Card:
 
     def _create_damage_variant(self, base_img: Image.Image):
         darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''')
+        modified = self._add_two_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''')
 
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
@@ -317,7 +347,7 @@ class Card:
 
     def _create_ready_variant(self, base_img: Image.Image):
         darkened = self._darken_image(base_img)
-        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-corner-right-up-icon lucide-corner-right-up"><path d="m10 9 5-5 5 5"/><path d="M4 20h7a4 4 0 0 0 4-4V4"/></svg>''')
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-corner-up-left-icon lucide-corner-up-left"><path d="M20 20v-7a4 4 0 0 0-4-4H4"/><path d="M9 14 4 9l5-5"/></svg>''')
 
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
@@ -419,7 +449,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [44, 48, 155, 157] 
+SPECIFIC_CARDS = [157] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
