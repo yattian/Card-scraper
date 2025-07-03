@@ -1428,4 +1428,25 @@
         ],
         rarity: "uncommon",
     },
+    {
+        id: "OGN-133",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-153",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-160",
+        keywords: [
+            "gear",
+        ],
+        rarity: "epic",
+    },
 ]
