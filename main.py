@@ -141,7 +141,11 @@ class Card:
             self._create_stun_variant(base_img)
             self._create_ready_variant(base_img)
             self._create_ganking_variant(base_img)
-        
+
+        if "teemo_legend" in self.keywords:
+            self._create_tap_variant(base_img)
+            self._create_hidden_variant(base_img, only_hidden=True)
+            
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
             self._create_play_variant(base_img)
@@ -293,7 +297,7 @@ class Card:
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
-    def _create_hidden_variant(self, base_img: Image.Image):
+    def _create_hidden_variant(self, base_img: Image.Image, only_hidden=False):
         darkened = self._darken_image(base_img)
         modified = self._add_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>')
         
@@ -301,6 +305,8 @@ class Card:
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
+        if only_hidden:
+            return
         # Modified hidden requires another hidden play (eye-off + chevron-right)
         combined_svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 48 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <!-- Eye-off icon (left side) -->
@@ -449,7 +455,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [47, 102, 200, 293] 
+SPECIFIC_CARDS = [263] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:

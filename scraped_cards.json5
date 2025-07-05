@@ -1311,7 +1311,7 @@
         id: "OGN-263",
         keywords: [
             "legend",
-            "tap",
+            "teemo_legend"
         ],
         rarity: "rare",
     },
