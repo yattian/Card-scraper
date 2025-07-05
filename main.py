@@ -449,7 +449,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [133, 153, 160] 
+SPECIFIC_CARDS = [47, 102, 200, 293] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:

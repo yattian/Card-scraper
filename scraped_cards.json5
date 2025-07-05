@@ -231,6 +231,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-047",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-048",
         keywords: [
             "draw",
@@ -487,6 +494,13 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-102",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-103",
         keywords: [
             "unit",
@@ -647,6 +661,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-133",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-134",
         keywords: [
             "spell",
@@ -725,6 +746,13 @@
         rarity: "epic",
     },
     {
+        id: "OGN-153",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-154",
         keywords: [
             "spell",
@@ -743,7 +771,7 @@
         id: "OGN-157",
         keywords: [
             "champunit",
-            "udyr_wildman"
+            "udyr_wildman",
         ],
         rarity: "rare",
     },
@@ -760,6 +788,13 @@
             "champunit",
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-160",
+        keywords: [
+            "gear",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-161",
@@ -925,6 +960,13 @@
             "hidden",
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-200",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-201",
@@ -1407,6 +1449,13 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-293",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-294",
         keywords: [
             "location",
@@ -1427,26 +1476,5 @@
             "discard",
         ],
         rarity: "uncommon",
-    },
-    {
-        id: "OGN-133",
-        keywords: [
-            "spell",
-        ],
-        rarity: "common",
-    },
-    {
-        id: "OGN-153",
-        keywords: [
-            "spell",
-        ],
-        rarity: "rare",
-    },
-    {
-        id: "OGN-160",
-        keywords: [
-            "gear",
-        ],
-        rarity: "epic",
     },
 ]
