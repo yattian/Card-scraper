@@ -1514,4 +1514,35 @@
         ],
         rarity: "uncommon",
     },
+    {
+        id: "OGN-292",
+        keywords: [
+            "location",
+            "the_dreaming_tree"
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-244",
+        keywords: [
+            "spell"
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-150",
+        keywords: [
+            "unit",
+            "accelerate"
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-107",
+        keywords: [
+            "unit",
+            "ava_achiever"
+        ],
+        rarity: "rare",
+    },
 ]

@@ -148,6 +148,12 @@ class Card:
         if "teemo_legend" in self.keywords:
             self._create_tap_variant(base_img)
             self._create_hidden_variant(base_img, only_hidden=True)
+
+        if "the_dreaming_tree" in self.keywords:
+            self._create_draw_variant(base_img)
+
+        if "ava_achiever" in self.keywords:
+            self._create_hidden_variant(base_img, only_hidden=True)
             
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
@@ -466,7 +472,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [230, 168, 144, 109, 29] 
+SPECIFIC_CARDS = [107] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
