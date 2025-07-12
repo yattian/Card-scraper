@@ -318,6 +318,13 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-061",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-063",
         keywords: [
             "gear",
@@ -387,6 +394,13 @@
         keywords: [
             "champunit",
             "tap",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-079",
+        keywords: [
+            "champunit",
         ],
         rarity: "epic",
     },
@@ -520,6 +534,14 @@
             "spell",
         ],
         rarity: "uncommon",
+    },
+    {
+        id: "OGN-107",
+        keywords: [
+            "unit",
+            "ava_achiever",
+        ],
+        rarity: "rare",
     },
     {
         id: "OGN-109",
@@ -759,6 +781,14 @@
         rarity: "rare",
     },
     {
+        id: "OGN-150",
+        keywords: [
+            "unit",
+            "accelerate",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-152",
         keywords: [
             "gear",
@@ -837,6 +867,14 @@
         keywords: [
             "gear",
             "tap",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-164",
+        keywords: [
+            "champunit",
+            "spend",
         ],
         rarity: "epic",
     },
@@ -1218,6 +1256,13 @@
         rarity: "epic",
     },
     {
+        id: "OGN-244",
+        keywords: [
+            "spell",
+        ],
+        rarity: "epic",
+    },
+    {
         id: "OGN-245",
         keywords: [
             "gear",
@@ -1486,6 +1531,14 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-292",
+        keywords: [
+            "location",
+            "the_dreaming_tree",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-293",
         keywords: [
             "location",
@@ -1513,36 +1566,5 @@
             "discard",
         ],
         rarity: "uncommon",
-    },
-    {
-        id: "OGN-292",
-        keywords: [
-            "location",
-            "the_dreaming_tree"
-        ],
-        rarity: "uncommon",
-    },
-    {
-        id: "OGN-244",
-        keywords: [
-            "spell"
-        ],
-        rarity: "epic",
-    },
-    {
-        id: "OGN-150",
-        keywords: [
-            "unit",
-            "accelerate"
-        ],
-        rarity: "rare",
-    },
-    {
-        id: "OGN-107",
-        keywords: [
-            "unit",
-            "ava_achiever"
-        ],
-        rarity: "rare",
     },
 ]

@@ -135,6 +135,9 @@ class Card:
         if "kill" in self.keywords:
             self._create_kill_variant(base_img)
 
+        if "spend" in self.keywords:
+            self._create_spend_variant(base_img)
+
         if "qiyana_victorious" in self.keywords:
             self._create_draw_variant(base_img)
             self._create_channel_variant(base_img)
@@ -384,6 +387,14 @@ class Card:
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
 
+    def _create_spend_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>''')
+
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
+
     def draw_white_circle(self, draw: ImageDraw.ImageDraw): 
         if 'sigspell' in self.keywords:
             cx = 185
@@ -472,7 +483,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [107] 
+SPECIFIC_CARDS = [164, 79, 61] 
 
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
