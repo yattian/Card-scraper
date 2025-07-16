@@ -1567,4 +1567,11 @@
         ],
         rarity: "uncommon",
     },
+    {
+        id: "OGN-236",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
 ]
