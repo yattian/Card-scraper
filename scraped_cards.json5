@@ -1574,4 +1574,26 @@
         ],
         rarity: "rare",
     },
+    {
+        id: "OGN-231",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-192",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-151",
+        keywords: [
+            "champunit",
+            "accelerate"
+        ],
+        rarity: "epic",
+    },
 ]
