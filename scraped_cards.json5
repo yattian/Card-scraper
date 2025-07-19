@@ -58,6 +58,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-009",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-010",
         keywords: [
             "unit",
@@ -108,9 +115,54 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-017",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-018",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-019",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-020",
         keywords: [
             "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-021",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-022",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-023",
+        keywords: [
+            "gear",
+            "tap",
         ],
         rarity: "uncommon",
     },
@@ -120,6 +172,20 @@
             "spell",
         ],
         rarity: "uncommon",
+    },
+    {
+        id: "OGN-025",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-026",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
     },
     {
         id: "OGN-027",
@@ -147,6 +213,28 @@
         keywords: [
             "champunit",
             "accelerate",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-031",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-032",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-033",
+        keywords: [
+            "spell",
         ],
         rarity: "rare",
     },
@@ -183,6 +271,14 @@
         id: "OGN-038",
         keywords: [
             "unit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-039",
+        keywords: [
+            "champunit",
+            "accelerate",
         ],
         rarity: "epic",
     },
@@ -267,6 +363,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-051",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-052",
         keywords: [
             "unit",
@@ -278,6 +381,13 @@
         keywords: [
             "hidden",
             "spell",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-054",
+        keywords: [
+            "unit",
         ],
         rarity: "common",
     },
@@ -318,9 +428,23 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-060",
+        keywords: [
+            "gear",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-061",
         keywords: [
             "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-062",
+        keywords: [
+            "spell",
         ],
         rarity: "uncommon",
     },
@@ -339,7 +463,21 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-065",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-066",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-067",
         keywords: [
             "champunit",
         ],
@@ -361,6 +499,28 @@
         rarity: "rare",
     },
     {
+        id: "OGN-070",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-071",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-072",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-073",
         keywords: [
             "champunit",
@@ -371,6 +531,14 @@
         id: "OGN-074",
         keywords: [
             "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-075",
+        keywords: [
+            "unit",
+            "accelerate",
         ],
         rarity: "rare",
     },
@@ -401,6 +569,13 @@
         id: "OGN-079",
         keywords: [
             "champunit",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-080",
+        keywords: [
+            "spell",
         ],
         rarity: "epic",
     },
@@ -442,6 +617,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-086",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-087",
         keywords: [
             "unit",
@@ -459,6 +641,35 @@
         id: "OGN-089",
         keywords: [
             "rune",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-090",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-091",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-092",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-093",
+        keywords: [
+            "spell",
         ],
         rarity: "common",
     },
@@ -489,6 +700,14 @@
         keywords: [
             "unit",
             "hidden",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-098",
+        keywords: [
+            "gear",
+            "tap",
         ],
         rarity: "uncommon",
     },
@@ -529,9 +748,23 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-104",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-105",
         keywords: [
             "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-106",
+        keywords: [
+            "unit",
         ],
         rarity: "uncommon",
     },
@@ -540,6 +773,13 @@
         keywords: [
             "unit",
             "ava_achiever",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-108",
+        keywords: [
+            "spell",
         ],
         rarity: "rare",
     },
@@ -596,6 +836,14 @@
         rarity: "rare",
     },
     {
+        id: "OGN-116",
+        keywords: [
+            "unit",
+            "accelerate",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-117",
         keywords: [
             "champunit",
@@ -629,6 +877,13 @@
         keywords: [
             "champunit",
             "hidden",
+        ],
+        rarity: "epic",
+    },
+    {
+        id: "OGN-122",
+        keywords: [
+            "spell",
         ],
         rarity: "epic",
     },
@@ -718,6 +973,14 @@
         rarity: "common",
     },
     {
+        id: "OGN-135",
+        keywords: [
+            "unit",
+            "hidden",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-136",
         keywords: [
             "unit",
@@ -753,9 +1016,45 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-141",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-142",
         keywords: [
             "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-143",
+        keywords: [
+            "gear",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-144",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-145",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-146",
+        keywords: [
+            "spell",
+            "wallop",
         ],
         rarity: "uncommon",
     },
@@ -789,6 +1088,14 @@
         rarity: "rare",
     },
     {
+        id: "OGN-151",
+        keywords: [
+            "champunit",
+            "accelerate",
+        ],
+        rarity: "epic",
+    },
+    {
         id: "OGN-152",
         keywords: [
             "gear",
@@ -817,6 +1124,13 @@
             "qiyana_victorious",
         ],
         rarity: "epic",
+    },
+    {
+        id: "OGN-156",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
     },
     {
         id: "OGN-157",
@@ -893,6 +1207,13 @@
         rarity: "common",
     },
     {
+        id: "OGN-167",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-168",
         keywords: [
             "spell",
@@ -929,7 +1250,21 @@
         rarity: "common",
     },
     {
+        id: "OGN-173",
+        keywords: [
+            "spell",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-174",
+        keywords: [
+            "unit",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-175",
         keywords: [
             "unit",
         ],
@@ -964,7 +1299,36 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-180",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-181",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-182",
+        keywords: [
+            "gear",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-183",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-184",
         keywords: [
             "gear",
             "tap",
@@ -979,9 +1343,24 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-186",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-187",
         keywords: [
             "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-188",
+        keywords: [
+            "unit",
         ],
         rarity: "uncommon",
     },
@@ -1007,6 +1386,13 @@
         rarity: "rare",
     },
     {
+        id: "OGN-192",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-193",
         keywords: [
             "champunit",
@@ -1021,9 +1407,38 @@
         rarity: "epic",
     },
     {
+        id: "OGN-195",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-196",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-197",
         keywords: [
             "champunit",
+            "hidden",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-198",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-199",
+        keywords: [
+            "unit",
             "hidden",
         ],
         rarity: "rare",
@@ -1172,9 +1587,38 @@
         rarity: "common",
     },
     {
+        id: "OGN-220",
+        keywords: [
+            "spell",
+            "hidden",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-221",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-222",
         keywords: [
             "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-223",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-224",
+        keywords: [
+            "spell",
         ],
         rarity: "uncommon",
     },
@@ -1186,7 +1630,42 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-226",
+        keywords: [
+            "unit",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-227",
+        keywords: [
+            "gear",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-228",
+        keywords: [
+            "gear",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-229",
+        keywords: [
+            "spell",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-230",
+        keywords: [
+            "unit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-231",
         keywords: [
             "unit",
         ],
@@ -1221,6 +1700,20 @@
         rarity: "epic",
     },
     {
+        id: "OGN-236",
+        keywords: [
+            "champunit",
+        ],
+        rarity: "rare",
+    },
+    {
+        id: "OGN-237",
+        keywords: [
+            "spell",
+        ],
+        rarity: "rare",
+    },
+    {
         id: "OGN-238",
         keywords: [
             "champunit",
@@ -1247,6 +1740,14 @@
             "champunit",
         ],
         rarity: "rare",
+    },
+    {
+        id: "OGN-242",
+        keywords: [
+            "gear",
+            "tap",
+        ],
+        rarity: "epic",
     },
     {
         id: "OGN-243",
@@ -1447,7 +1948,28 @@
         rarity: "epic",
     },
     {
+        id: "OGN-271",
+        keywords: [
+            "token",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-272",
+        keywords: [
+            "token",
+        ],
+        rarity: "common",
+    },
+    {
         id: "OGN-273",
+        keywords: [
+            "token",
+        ],
+        rarity: "common",
+    },
+    {
+        id: "OGN-274",
         keywords: [
             "token",
         ],
@@ -1489,6 +2011,34 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-280",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-281",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-282",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-283",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-284",
         keywords: [
             "location",
@@ -1510,7 +2060,21 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-287",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-288",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-289",
         keywords: [
             "location",
         ],
@@ -1553,6 +2117,20 @@
         rarity: "uncommon",
     },
     {
+        id: "OGN-295",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
+        id: "OGN-296",
+        keywords: [
+            "location",
+        ],
+        rarity: "uncommon",
+    },
+    {
         id: "OGN-297",
         keywords: [
             "location",
@@ -1566,34 +2144,5 @@
             "discard",
         ],
         rarity: "uncommon",
-    },
-    {
-        id: "OGN-236",
-        keywords: [
-            "champunit",
-        ],
-        rarity: "rare",
-    },
-    {
-        id: "OGN-231",
-        keywords: [
-            "unit",
-        ],
-        rarity: "rare",
-    },
-    {
-        id: "OGN-192",
-        keywords: [
-            "unit",
-        ],
-        rarity: "rare",
-    },
-    {
-        id: "OGN-151",
-        keywords: [
-            "champunit",
-            "accelerate"
-        ],
-        rarity: "epic",
     },
 ]

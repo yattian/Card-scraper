@@ -157,6 +157,10 @@ class Card:
 
         if "ava_achiever" in self.keywords:
             self._create_hidden_variant(base_img, only_hidden=True)
+
+        if "wallop" in self.keywords:
+            self._create_spend_variant(base_img)
+            extra_applied = True
             
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
@@ -483,8 +487,9 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [151] 
+SPECIFIC_CARDS = [] 
 
+from collections import Counter
 # === Load config and process cards ===
 with open(CONFIG_PATH, "r") as f:
     entries = json.load(f)
@@ -501,7 +506,12 @@ with open(CONFIG_PATH, "r") as f:
         print(f"Processing {len(entries)} specific cards: {SPECIFIC_CARDS}")
     else:
         print(f"Processing all {len(entries)} cards")
-    
+
+    # Find duplicates
+    ids = [entry["id"] for entry in entries]
+    id_counts = Counter(ids)
+    duplicates = [card_id for card_id, count in id_counts.items() if count > 1]
+
     cards = [Card.from_dict(entry) for entry in entries]
 
 for card in cards:
