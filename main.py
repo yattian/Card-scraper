@@ -161,6 +161,16 @@ class Card:
         if "wallop" in self.keywords:
             self._create_spend_variant(base_img)
             extra_applied = True
+
+        if "kraken_hunter" in self.keywords:
+            self._create_accelerate_variant(base_img)
+            self._create_accelerate_buffs_variant(base_img)
+            self._create_play_variant(base_img)
+            self._create_play_buffs_variant(base_img)
+
+        if "commander_ledros" in self.keywords:
+            self._create_play_variant(base_img)
+            self._create_kill_variant(base_img)
             
         if extra_applied and "location" not in self.keywords:
             # Always create the base "play" variant (single triangle)
@@ -190,7 +200,7 @@ class Card:
         
         return result
     
-    def _add_two_svg_overlay(self, img: Image.Image, svg_string: str) -> Image.Image:
+    def _add_two_svg_overlay(self, img: Image.Image, svg_string: str, svg_string_2: str, right_shift_down: bool) -> Image.Image:
         """Add two SVG overlays: one on the left and one on the right of the card"""
 
         img_width, img_height = img.size
@@ -202,7 +212,7 @@ class Card:
 
         # Convert both SVGs to PNG
         png_left = svg2png(bytestring=svg_string.encode('utf-8'))
-        png_right = svg2png(bytestring=svg_string.encode('utf-8'))
+        png_right = svg2png(bytestring=svg_string_2.encode('utf-8'))
 
         icon_left = Image.open(BytesIO(png_left)).convert("RGBA")
         icon_right = Image.open(BytesIO(png_right)).convert("RGBA")
@@ -210,12 +220,16 @@ class Card:
         # Compute horizontal positions (25% and 75% of width)
         left_x = int(img_width * 0.35) - icon_left.width // 2
         right_x = int(img_width * 0.65) - icon_right.width // 2
-        icon_y = cy - icon_left.height // 2  # Same vertical for both
+        icon_y_left = cy - icon_left.height // 2
+        if right_shift_down:
+            icon_y_right = cy - icon_right.height // 2 + 10
+        else: 
+            icon_y_right = cy - icon_left.height // 2
 
         # Paste icons onto a copy of the image
         result = img.convert("RGBA")
-        result.paste(icon_left, (left_x, icon_y), icon_left)
-        result.paste(icon_right, (right_x, icon_y), icon_right)
+        result.paste(icon_left, (left_x, icon_y_left), icon_left)
+        result.paste(icon_right, (right_x, icon_y_right), icon_right)
 
         return result
 
@@ -353,7 +367,7 @@ class Card:
 
     def _create_damage_variant(self, base_img: Image.Image):
         darkened = self._darken_image(base_img)
-        modified = self._add_two_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''')
+        modified = self._add_two_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''', '''<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame-icon lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>''', False)
 
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
@@ -395,6 +409,22 @@ class Card:
         darkened = self._darken_image(base_img)
         modified = self._add_svg_overlay(darkened, '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>''')
 
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
+
+    def _create_accelerate_buffs_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_two_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-right-icon lucide-chevrons-right"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></svg>', '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>''', True)
+        
+        pixel_id = self.pixelborn_id("a")
+        self.pixelborn_internal_numb += 1
+        modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
+
+    def _create_play_buffs_variant(self, base_img: Image.Image):
+        darkened = self._darken_image(base_img)
+        modified = self._add_two_svg_overlay(darkened, '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right-icon lucide-chevron-right"><path d="m9 18 6-6-6-6"/></svg>', '''<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-down-icon lucide-arrow-down"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>''', True)
+        
         pixel_id = self.pixelborn_id("a")
         self.pixelborn_internal_numb += 1
         modified.save(os.path.join(FINAL_DIR, f"{pixel_id}.png"))
@@ -487,7 +517,7 @@ else:
     ALT_ART = False
 
 
-SPECIFIC_CARDS = [] 
+SPECIFIC_CARDS = [150, 231] 
 
 from collections import Counter
 # === Load config and process cards ===

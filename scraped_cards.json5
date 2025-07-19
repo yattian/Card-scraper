@@ -1083,7 +1083,7 @@
         id: "OGN-150",
         keywords: [
             "unit",
-            "accelerate",
+            "kraken_hunter",
         ],
         rarity: "rare",
     },
@@ -1668,6 +1668,7 @@
         id: "OGN-231",
         keywords: [
             "unit",
+            "commander_ledros"
         ],
         rarity: "rare",
     },
